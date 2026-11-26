@@ -318,8 +318,8 @@
     const picks = DATA.filter((p) => p.img.length && p.stock > 0 && p.brand && p.brand !== "Original").slice(0, 60);
     const chosen = [];
     const seen = new Set();
-    for (const p of picks) { if (!seen.has(p.cat)) { seen.add(p.cat); chosen.push(p); } if (chosen.length === 6) break; }
-    $("#heroTiles").innerHTML = chosen.map((p) => `<a href="?p=${p.id}" data-open="${p.id}" tabindex="-1"><img src="${IMG + p.img[0]}_tn" alt="" width="200" height="200"></a>`).join("");
+    for (const p of picks) { if (!seen.has(p.cat)) { seen.add(p.cat); chosen.push(p); } if (chosen.length === 4) break; }
+    $("#heroTiles").innerHTML = chosen.map((p) => `<a class="tile" href="?p=${p.id}" data-open="${p.id}"><img src="${IMG + p.img[0]}_tn" alt="" width="300" height="225"><span class="tile__body"><span class="tile__name">${esc(p.name)}</span><span class="tile__price">${priceText(p)}</span></span></a>`).join("");
   }
 
   // ---------- Detail produk ----------
