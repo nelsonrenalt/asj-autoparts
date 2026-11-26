@@ -224,6 +224,11 @@ def main():
     print("Merk mobil:", Counter(m for p in products for m in p["makes"]).most_common())
     print("Merk part:", Counter(p["brand"] for p in products).most_common(15))
 
+    # Halaman per produk + sitemap untuk Google
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import build_pages
+    build_pages.main()
+
 
 if __name__ == "__main__":
     main()

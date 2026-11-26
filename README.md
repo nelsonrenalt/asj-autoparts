@@ -31,6 +31,7 @@ Website katalog resmi **ASJ Autoparts**, toko spare part mobil & truk dengan 1.2
 | 🟢 **Status toko real-time** | Menampilkan *buka / tutup* sesuai jam operasional (WIB) |
 | 📱 **Mobile-first** | Nyaman dipakai di HP: tombol besar, filter geser, galeri bisa di-swipe |
 | ♿ **Ramah pengguna (HCI)** | Navigasi keyboard, kontras warna jelas, tombol *Back* berfungsi, link produk bisa dibagikan |
+| 🌐 **SEO Google** | 1.248 halaman produk + `sitemap.xml` + data terstruktur (Product schema) agar mudah ditemukan di Google |
 | ⚡ **Ringan & gratis** | Website statis tanpa server, di-hosting gratis di GitHub Pages |
 
 ## 🧱 Teknologi
@@ -50,7 +51,11 @@ asj-autoparts/
 │   ├── js/app.js            Logika katalog
 │   └── img/                 Logo & ikon
 ├── data/products.json       Data produk (otomatis dari export Shopee)
-└── tools/build_products.py  Skrip pembuat data produk
+├── produk/                  Halaman per produk untuk Google (otomatis)
+├── sitemap.xml              Daftar halaman untuk Google (otomatis)
+└── tools/
+    ├── build_products.py    Export Shopee → products.json
+    └── build_pages.py       products.json → halaman produk + sitemap
 ```
 
 ## 🔄 Memperbarui produk

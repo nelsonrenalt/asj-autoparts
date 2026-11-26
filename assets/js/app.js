@@ -57,7 +57,8 @@
     return "#";
   };
   const shopeeProduct = (id) => "https://shopee.co.id/product/" + CFG.shopeeShopId + "/" + id;
-  const productUrl = (id) => location.origin + location.pathname + "?p=" + id;
+  const pageUrl = (p) => "produk/" + p.u + ".html";
+  const productUrl = (p) => new URL(pageUrl(p), location.href.split(/[?#]/)[0]).href;
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const debounce = (fn, ms) => { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; };
   const svg = (paths, cls = "ico") => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${paths}</svg>`;
@@ -247,7 +248,7 @@
       <div class="card__media">${img}${flag}</div>
       <div class="card__body">
         <span class="card__brand">${esc(p.brand || "")}</span>
-        <h3 class="card__title"><a href="?p=${p.id}" data-open="${p.id}">${esc(p.name)}</a></h3>
+        <h3 class="card__title"><a href="${pageUrl(p)}" data-open="${p.id}">${esc(p.name)}</a></h3>
         <p class="card__price">${priceText(p)}</p>
         <div class="card__meta"><span class="stock ${st.cls}">${st.text}</span>${p.var.length > 1 ? `<span class="card__vars">${p.var.length} varian</span>` : ""}</div>
       </div></article></li>`;
@@ -331,7 +332,7 @@
     const chosen = [];
     const seen = new Set();
     for (const p of picks) { if (!seen.has(p.cat)) { seen.add(p.cat); chosen.push(p); } if (chosen.length === 4) break; }
-    $("#heroTiles").innerHTML = chosen.map((p) => `<a class="tile" href="?p=${p.id}" data-open="${p.id}"><span class="tile__img"><img src="${IMG + p.img[0]}_tn" alt="" width="300" height="300"></span><span class="tile__body"><span class="tile__name">${esc(p.name)}</span><span class="tile__price">${priceText(p)}</span></span></a>`).join("");
+    $("#heroTiles").innerHTML = chosen.map((p) => `<a class="tile" href="${pageUrl(p)}" data-open="${p.id}"><span class="tile__img"><img src="${IMG + p.img[0]}_tn" alt="" width="300" height="300"></span><span class="tile__body"><span class="tile__name">${esc(p.name)}</span><span class="tile__price">${priceText(p)}</span></span></a>`).join("");
   }
 
   // ---------- Detail produk ----------
@@ -355,7 +356,7 @@
     $("#pdPrice").textContent = v ? rupiah(v.p) : priceText(p);
     const st = stockInfo(v ? v.s : p.stock);
     $("#pdStock").innerHTML = `<span class="stock ${st.cls}">${st.text}</span>${v ? ` <span class="muted">· varian ${esc(v.n)}</span>` : ""}`;
-    const msg = `Halo ${CFG.storeName}, saya tertarik dengan produk ini:\n*${p.name}*${v ? "\nVarian: " + v.n : ""}\nHarga: ${v ? rupiah(v.p) : priceText(p)}\n${shopeeProduct(p.id)}\n\nApakah stoknya ada dan cocok untuk mobil saya? Tipe/tahun mobil: `;
+    const msg = `Halo ${CFG.storeName}, saya tertarik dengan produk ini:\n*${p.name}*${v ? "\nVarian: " + v.n : ""}\nHarga: ${v ? rupiah(v.p) : priceText(p)}\n${productUrl(p)}\n\nApakah stoknya ada dan cocok untuk mobil saya? Tipe/tahun mobil: `;
     $("#pdWa").href = waLink(msg);
   }
 
@@ -425,7 +426,7 @@
     });
     $("#pdVars").addEventListener("click", (e) => { const b = e.target.closest(".var"); if (b) setVar(+b.dataset.i); });
     $("#pdShare").addEventListener("click", async () => {
-      const url = productUrl(cur.id);
+      const url = productUrl(cur);
       if (navigator.share) { try { await navigator.share({ title: cur.name, text: cur.name + " — " + priceText(cur), url }); } catch (_) { /* dibatalkan */ } }
       else { try { await navigator.clipboard.writeText(url); toast("Link produk disalin"); } catch (_) { prompt("Salin link ini:", url); } }
     });
