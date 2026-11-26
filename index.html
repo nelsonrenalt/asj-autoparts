@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cf.shopee.co.id">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <script type="application/ld+json">
   {
@@ -96,20 +96,21 @@
   <main>
     <!-- HERO -->
     <section class="hero">
+      <div class="hero__glow" aria-hidden="true"></div>
       <div class="container hero__inner">
         <div class="hero__copy">
-          <p class="eyebrow">Toko spare part mobil &amp; truk · Jember</p>
-          <h1>Spare part yang pas untuk kendaraan Anda, <span class="hl">lengkap dan siap kirim.</span></h1>
-          <p class="hero__lead">Lebih dari <strong data-count>1.200</strong> produk untuk Colt Diesel, Kijang, Avanza, Gran Max, Panther, Elf, Carry, dan lainnya. Pilih produknya di sini, lalu beli dengan aman lewat marketplace favorit Anda.</p>
+          <p class="pill"><span class="pill__dot" aria-hidden="true"></span>Spare part mobil &amp; truk · Jember</p>
+          <h1>Spare part tepat,<br><span class="hl">kendaraan kembali</span> melaju.</h1>
+          <p class="hero__lead">Ribuan komponen untuk Colt Diesel, Kijang, Avanza, Gran Max, Panther, Elf, hingga Carry. Pilih di sini, lalu beli dengan aman lewat marketplace favorit Anda.</p>
           <div class="hero__cta">
-            <a href="#katalog" class="btn btn--accent btn--lg">Lihat katalog <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            <a href="#" data-wa data-wa-text="Halo ASJ Autoparts, saya mau tanya ketersediaan spare part untuk mobil saya." class="btn btn--ghost btn--lg" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg> Tanya kecocokan part</a>
+            <a href="#katalog" class="btn btn--accent btn--lg">Jelajahi katalog <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a href="#" data-wa data-wa-text="Halo ASJ Autoparts, saya mau tanya ketersediaan spare part untuk mobil saya." class="btn btn--ghost btn--lg" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg> Konsultasi part</a>
           </div>
-          <ul class="hero__markets" aria-label="Kami juga berjualan di">
-            <li><a data-market="shopee" href="#" target="_blank" rel="noopener" class="mk mk--shopee">Shopee</a></li>
-            <li><a data-market="tokopedia" href="#" target="_blank" rel="noopener" class="mk mk--tokopedia">Tokopedia</a></li>
-            <li><a data-market="tiktok" href="#" target="_blank" rel="noopener" class="mk mk--tiktok">TikTok Shop</a></li>
-          </ul>
+          <dl class="stats">
+            <div><dt>Produk</dt><dd><span data-count>1.200</span>+</dd></div>
+            <div><dt>Kategori</dt><dd data-stat="cats">14</dd></div>
+            <div><dt>Marketplace</dt><dd>3</dd></div>
+          </dl>
         </div>
         <div class="hero__visual">
           <div class="showcase">
@@ -119,8 +120,14 @@
             </div>
             <div class="hero__tiles" id="heroTiles"></div>
           </div>
-          <div class="float float--a" aria-hidden="true"><svg class="ico"><use href="#i-check"/></svg><div><b><span data-count>1.200</span>+ produk</b>siap dikirim dari Jember</div></div>
+          <div class="float float--a" aria-hidden="true"><svg class="ico"><use href="#i-check"/></svg><div><b>Siap kirim</b>dari Jember</div></div>
           <div class="float float--b" aria-hidden="true"><svg class="ico"><use href="#i-shield"/></svg><div><b>Belanja aman</b>Shopee · Tokopedia · TikTok</div></div>
+        </div>
+      </div>
+      <div class="marquee" aria-label="Merk kendaraan yang kami layani">
+        <div class="marquee__track">
+          <span>Mitsubishi</span><span>Toyota</span><span>Daihatsu</span><span>Isuzu</span><span>Suzuki</span><span>Hino</span><span>Colt Diesel</span><span>Kijang</span><span>Gran Max</span><span>Panther</span><span>Elf</span><span>L300</span>
+          <span aria-hidden="true">Mitsubishi</span><span aria-hidden="true">Toyota</span><span aria-hidden="true">Daihatsu</span><span aria-hidden="true">Isuzu</span><span aria-hidden="true">Suzuki</span><span aria-hidden="true">Hino</span><span aria-hidden="true">Colt Diesel</span><span aria-hidden="true">Kijang</span><span aria-hidden="true">Gran Max</span><span aria-hidden="true">Panther</span><span aria-hidden="true">Elf</span><span aria-hidden="true">L300</span>
         </div>
       </div>
     </section>
@@ -128,9 +135,9 @@
     <!-- TRUST -->
     <section class="trust" aria-label="Kenapa belanja di ASJ Autoparts">
       <div class="container trust__grid">
-        <div class="trust__item"><svg class="ico" aria-hidden="true"><use href="#i-box"/></svg><div><strong><span data-count>1.200</span>+ produk</strong><span>Part mesin, rem, kaki-kaki, kelistrikan, dan lainnya</span></div></div>
-        <div class="trust__item"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg><div><strong>Transaksi aman</strong><span>Pembayaran lewat Shopee, Tokopedia, dan TikTok Shop</span></div></div>
-        <div class="trust__item"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg><div><strong>Bisa tanya dulu</strong><span>Cek kecocokan part via WhatsApp sebelum membeli</span></div></div>
+        <div class="trust__item"><svg class="ico" aria-hidden="true"><use href="#i-box"/></svg><div><strong>Stok lengkap</strong><span>Mesin, rem, kaki-kaki, kelistrikan, body</span></div></div>
+        <div class="trust__item"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg><div><strong>Transaksi aman</strong><span>Bayar lewat Shopee, Tokopedia, TikTok Shop</span></div></div>
+        <div class="trust__item"><svg class="ico" aria-hidden="true"><use href="#i-chat"/></svg><div><strong>Konsultasi gratis</strong><span>Cek kecocokan part sebelum membeli</span></div></div>
         <div class="trust__item"><svg class="ico" aria-hidden="true"><use href="#i-truck"/></svg><div><strong>Kirim se-Indonesia</strong><span>Dikemas rapi, dikirim dari Jember</span></div></div>
       </div>
     </section>
@@ -139,6 +146,7 @@
     <section class="section" id="kategori" aria-labelledby="kategoriTitle">
       <div class="container">
         <div class="section__head">
+          <p class="kicker">01 — Kategori</p>
           <h2 id="kategoriTitle">Belanja per kategori</h2>
           <p>Pilih kategori untuk langsung melihat produknya.</p>
         </div>
@@ -155,6 +163,7 @@
     <section class="section section--alt" id="katalog" aria-labelledby="katalogTitle" tabindex="-1">
       <div class="container">
         <div class="section__head">
+          <p class="kicker">02 — Katalog</p>
           <h2 id="katalogTitle">Katalog produk</h2>
           <p>Stok dan harga mengikuti data toko kami. Harga akhir yang berlaku adalah harga di marketplace.</p>
         </div>
@@ -232,13 +241,14 @@
     <section class="section" id="cara-belanja" aria-labelledby="caraTitle">
       <div class="container">
         <div class="section__head">
+          <p class="kicker">03 — Cara belanja</p>
           <h2 id="caraTitle">Cara belanja</h2>
           <p>Tiga langkah mudah. Pembayaran tetap lewat marketplace, jadi uang Anda aman.</p>
         </div>
         <ol class="steps">
-          <li><span class="steps__no">1</span><h3>Cari produknya</h3><p>Gunakan kolom pencarian, kategori, atau merk kendaraan. Belum yakin cocok? Klik <b>Tanya via WhatsApp</b>.</p></li>
-          <li><span class="steps__no">2</span><h3>Pilih marketplace</h3><p>Buka detail produk, lalu tekan tombol <b>Shopee</b>, <b>Tokopedia</b>, atau <b>TikTok Shop</b>.</p></li>
-          <li><span class="steps__no">3</span><h3>Bayar &amp; terima barang</h3><p>Selesaikan pembayaran di marketplace. Pesanan kami kemas dan kirim pada hari kerja.</p></li>
+          <li><span class="steps__no">01</span><h3>Cari produknya</h3><p>Gunakan kolom pencarian, kategori, atau merk kendaraan. Belum yakin cocok? Klik <b>Tanya via WhatsApp</b>.</p></li>
+          <li><span class="steps__no">02</span><h3>Pilih marketplace</h3><p>Buka detail produk, lalu tekan tombol <b>Shopee</b>, <b>Tokopedia</b>, atau <b>TikTok Shop</b>.</p></li>
+          <li><span class="steps__no">03</span><h3>Bayar &amp; terima barang</h3><p>Selesaikan pembayaran di marketplace. Pesanan kami kemas dan kirim pada hari kerja.</p></li>
         </ol>
       </div>
     </section>
@@ -247,12 +257,13 @@
     <section class="section section--dark" id="toko" aria-labelledby="tokoTitle">
       <div class="container">
         <div class="section__head section__head--light">
+          <p class="kicker">04 — Toko resmi</p>
           <h2 id="tokoTitle">Kunjungi toko resmi kami</h2>
           <p>Cari nama <b>ASJ Autoparts</b> di marketplace pilihan Anda. Lihat ulasan pembeli lain di sana.</p>
         </div>
         <div class="market-grid">
           <a class="market-card market-card--shopee" data-market="shopee" href="#" target="_blank" rel="noopener">
-            <span class="market-card__name">Shopee</span><span class="market-card__sub">Gratis ongkir &amp; voucher Shopee</span><span class="market-card__go">Buka toko <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+            <span class="market-card__name">Shopee</span><span class="market-card__sub">Pakai voucher &amp; promo Shopee</span><span class="market-card__go">Buka toko <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
           </a>
           <a class="market-card market-card--tokopedia" data-market="tokopedia" href="#" target="_blank" rel="noopener">
             <span class="market-card__name">Tokopedia</span><span class="market-card__sub">Bayar pakai metode favorit Anda</span><span class="market-card__go">Buka toko <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></span>
@@ -268,6 +279,7 @@
     <section class="section" id="faq" aria-labelledby="faqTitle">
       <div class="container container--narrow">
         <div class="section__head">
+          <p class="kicker">05 — FAQ</p>
           <h2 id="faqTitle">Pertanyaan yang sering ditanyakan</h2>
         </div>
         <div class="faq">
@@ -284,6 +296,7 @@
     <section class="section section--alt" id="kontak" aria-labelledby="kontakTitle">
       <div class="container contact">
         <div>
+          <p class="kicker">06 — Kontak</p>
           <h2 id="kontakTitle">Butuh bantuan memilih part?</h2>
           <p class="contact__lead">Tim kami siap membantu pada jam kerja. Sebutkan tipe kendaraan dan part yang Anda cari.</p>
           <a class="btn btn--wa btn--lg" data-wa href="#" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg> Chat WhatsApp <span data-wa-display>0823-0215-0788</span></a>

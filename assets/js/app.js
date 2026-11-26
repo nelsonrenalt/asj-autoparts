@@ -114,6 +114,16 @@
     });
     nav.addEventListener("click", (e) => { if (e.target.tagName === "A") { nav.classList.remove("is-open"); tog.setAttribute("aria-expanded", "false"); } });
 
+    // Animasi muncul saat di-scroll
+    if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const io = new IntersectionObserver((ents) => ents.forEach((en) => {
+        if (en.isIntersecting) { const t = en.target; t.classList.add("is-in"); io.unobserve(t); setTimeout(() => { t.style.transitionDelay = ""; t.classList.remove("reveal", "is-in"); }, 1200); }
+      }), { rootMargin: "0px 0px -8% 0px" });
+      window.__reveal = (root) => $$(".section__head, .steps li, .market-card, .faq details, .contact > *, .trust__item, .cat", root || document)
+        .forEach((el, i) => { if (!el.classList.contains("reveal")) { el.classList.add("reveal"); el.style.transitionDelay = (i % 6) * 60 + "ms"; io.observe(el); } });
+      window.__reveal();
+    } else window.__reveal = () => {};
+
     // Tombol ke atas
     const top = $("#toTop");
     window.addEventListener("scroll", () => { top.hidden = window.scrollY < 900; }, { passive: true });
@@ -311,15 +321,17 @@
       <button class="cat" type="button" data-cat="${k}"><span class="cat__ico">${svg(IC[k])}</span><strong>${l}</strong><span class="cat__n">${cc[k]} produk</span></button>`).join("");
     $("#makeRow").innerHTML = Object.entries(mc).filter(([, n]) => n >= 5).sort((a, b) => b[1] - a[1]).map(([m, n]) => `
       <button class="make" type="button" data-make="${esc(m)}">${svg('<use href="#i-car"/>')} ${esc(m)} <small>${n}</small></button>`).join("");
+    window.__reveal($("#kategori"));
     const count = Math.floor(DATA.length / 100) * 100;
     $$("[data-count]").forEach((e) => (e.textContent = count.toLocaleString("id-ID")));
+    $$("[data-stat=cats]").forEach((e) => (e.textContent = CATS.filter(([k]) => cc[k] && k !== "lainnya").length));
     $("#updated").textContent = new Date(window.__updated).toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" });
     // contoh produk asli di hero
     const picks = DATA.filter((p) => p.img.length && p.stock > 0 && p.brand && p.brand !== "Original").slice(0, 60);
     const chosen = [];
     const seen = new Set();
     for (const p of picks) { if (!seen.has(p.cat)) { seen.add(p.cat); chosen.push(p); } if (chosen.length === 4) break; }
-    $("#heroTiles").innerHTML = chosen.map((p) => `<a class="tile" href="?p=${p.id}" data-open="${p.id}"><img src="${IMG + p.img[0]}_tn" alt="" width="300" height="225"><span class="tile__body"><span class="tile__name">${esc(p.name)}</span><span class="tile__price">${priceText(p)}</span></span></a>`).join("");
+    $("#heroTiles").innerHTML = chosen.map((p) => `<a class="tile" href="?p=${p.id}" data-open="${p.id}"><span class="tile__img"><img src="${IMG + p.img[0]}_tn" alt="" width="300" height="300"></span><span class="tile__body"><span class="tile__name">${esc(p.name)}</span><span class="tile__price">${priceText(p)}</span></span></a>`).join("");
   }
 
   // ---------- Detail produk ----------
