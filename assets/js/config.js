@@ -21,6 +21,6 @@ window.ASJ_CONFIG = {
   // pencarian "ASJ Autoparts" di marketplace tersebut. Isi dengan link toko asli Anda.
   shopee: "https://shopee.co.id/molycuteguy",
   shopeeShopId: "22381416",
-  tokopedia: "",
-  tiktok: "",
+  tokopedia: "https://www.tokopedia.com/asj-autoparts",
+  tiktok: "https://vt.tiktok.com/ZSsh4mmS2/",
 };
