@@ -10,7 +10,6 @@ Website katalog resmi **ASJ Autoparts**, toko spare part mobil & truk dengan 1.2
 [![Shopee](https://img.shields.io/badge/Shopee-ee4d2d?style=for-the-badge&logo=shopee&logoColor=white)](https://shopee.co.id/molycuteguy)
 [![Tokopedia](https://img.shields.io/badge/Tokopedia-03ac0e?style=for-the-badge&logoColor=white)](https://www.tokopedia.com/asj-autoparts)
 [![TikTok Shop](https://img.shields.io/badge/TikTok_Shop-111111?style=for-the-badge&logo=tiktok&logoColor=white)](https://vt.tiktok.com/ZSsh4mmS2/)
-[![WhatsApp](https://img.shields.io/badge/WhatsApp-1fa855?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/6282302150788)
 
 <br>
 
@@ -27,7 +26,6 @@ Website katalog resmi **ASJ Autoparts**, toko spare part mobil & truk dengan 1.2
 | 🔎 **Pencarian pintar** | Paham istilah bengkel, misalnya *laher = bearing*, *kampas = brake pad*, *fan belt = tali kipas* |
 | 🗂️ **Filter lengkap** | Kategori, merk kendaraan (Mitsubishi, Toyota, Daihatsu, Isuzu, Suzuki, Hino), merk part, dan ketersediaan stok |
 | 🛒 **Beli langsung** | Setiap produk terhubung ke Shopee, Tokopedia, dan TikTok Shop |
-| 💬 **Tanya via WhatsApp** | Pesan otomatis berisi nama produk, varian, dan harga |
 | 🟢 **Status toko real-time** | Menampilkan *buka / tutup* sesuai jam operasional (WIB) |
 | 📱 **Mobile-first** | Nyaman dipakai di HP: tombol besar, filter geser, galeri bisa di-swipe |
 | ♿ **Ramah pengguna (HCI)** | Navigasi keyboard, kontras warna jelas, tombol *Back* berfungsi, link produk bisa dibagikan |
@@ -47,7 +45,7 @@ asj-autoparts/
 ├── index.html               Halaman utama
 ├── assets/
 │   ├── css/style.css        Tampilan
-│   ├── js/config.js         ⚙️ Pengaturan toko (WA, jam buka, link marketplace)
+│   ├── js/config.js         ⚙️ Pengaturan toko (jam buka, link marketplace)
 │   ├── js/app.js            Logika katalog
 │   └── img/                 Logo & ikon
 ├── data/products.json       Data produk (otomatis dari export Shopee)
@@ -78,7 +76,7 @@ asj-autoparts/
 
 ## ⚙️ Mengubah info toko
 
-Edit `assets/js/config.js` untuk mengganti nomor WhatsApp, jam operasional, atau link marketplace.
+Edit `assets/js/config.js` untuk mengganti jam operasional atau link marketplace.
 
 ## 💻 Menjalankan di komputer
 

@@ -500,3 +500,7 @@ body.no-scroll { overflow: hidden; }
   .sp-vars li { grid-template-columns: 1fr auto; }
   .sp-vars li .stock { grid-column: 1 / -1; }
 }
+
+.contact__cta { display: flex; flex-wrap: wrap; gap: 10px; }
+@media (max-width: 800px) { .contact__cta .btn { flex: 1 1 100%; } }
+.to-top { bottom: 18px; }

@@ -6,9 +6,6 @@ window.ASJ_CONFIG = {
   storeName: "ASJ Autoparts",
   city: "Jember, Jawa Timur",
 
-  // Nomor WhatsApp format internasional tanpa "+" dan tanpa "0" di depan
-  whatsapp: "6282302150788",
-  whatsappDisplay: "0823-0215-0788",
 
   // Jam buka (WIB). Hari: 0=Minggu, 1=Senin ... 6=Sabtu
   openDays: [1, 2, 3, 4, 5, 6],

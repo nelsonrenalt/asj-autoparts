@@ -9,7 +9,6 @@ import html
 import json
 import os
 import re
-import shutil
 from datetime import date
 from urllib.parse import quote
 
@@ -28,7 +27,7 @@ CAT_NAME = {
 def read_config():
     txt = open(os.path.join(ROOT, "assets", "js", "config.js"), encoding="utf-8").read()
     get = lambda k: (re.search(k + r':\s*"([^"]*)"', txt) or [None, ""])[1]
-    return {k: get(k) for k in ("storeName", "whatsapp", "shopee", "shopeeShopId", "tokopedia", "tiktok", "hoursText")}
+    return {k: get(k) for k in ("storeName", "shopee", "shopeeShopId", "tokopedia", "tiktok", "hoursText")}
 
 
 def asset_version():
@@ -61,7 +60,7 @@ def stock_text(s):
 def icon_sprite():
     """Ambil ikon yang dipakai dari sprite di index.html supaya selalu sama."""
     idx = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
-    syms = [re.search(r'<symbol id="%s".*?</symbol>' % k, idx, re.S).group(0) for k in ("i-wa", "i-bag", "i-left")]
+    syms = [re.search(r'<symbol id="%s".*?</symbol>' % k, idx, re.S).group(0) for k in ("i-bag", "i-left")]
     return '<svg width="0" height="0" style="position:absolute" aria-hidden="true">' + "".join(syms) + "</svg>"
 
 
@@ -72,12 +71,10 @@ def page(p, cfg, img_base, ver, related, sprite):
     cat = CAT_NAME.get(p["cat"], "Lainnya")
     imgs = [img_base + h for h in p["img"]]
     desc_short = re.sub(r"\s+", " ", p["desc"])[:155] or name
-    meta_desc = f"{name}. Harga {price_text(p)}. {('Cocok untuk ' + ', '.join(p['makes']) + '. ') if p['makes'] else ''}Beli aman di Shopee, Tokopedia, TikTok Shop atau tanya via WhatsApp {cfg['storeName']}."
+    meta_desc = f"{name}. Harga {price_text(p)}. {('Cocok untuk ' + ', '.join(p['makes']) + '. ') if p['makes'] else ''}Beli aman di Shopee, Tokopedia, atau TikTok Shop {cfg['storeName']}."
     shopee = f"https://shopee.co.id/product/{cfg['shopeeShopId']}/{p['id']}"
     tokped = cfg["tokopedia"] or "https://www.tokopedia.com/search?st=shop&q=" + quote(cfg["storeName"])
     tiktok = cfg["tiktok"] or "https://www.tiktok.com/search?q=" + quote(cfg["storeName"])
-    wa_msg = f"Halo {cfg['storeName']}, saya tertarik dengan produk ini:\n*{name}*\nHarga: {price_text(p)}\n{url}\n\nApakah stoknya ada dan cocok untuk mobil saya? Tipe/tahun mobil: "
-    wa = f"https://wa.me/{cfg['whatsapp']}?text={quote(wa_msg)}"
     st_cls, st_txt = stock_text(p["stock"])
 
     offers = {
@@ -159,7 +156,6 @@ def page(p, cfg, img_base, ver, related, sprite):
 <p class="pd__buy-label">Beli dengan aman di:</p>
 <a class="btn btn--shopee btn--block btn--lg" href="{e(shopee)}" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-bag"/></svg> Beli di Shopee</a>
 <div class="pd__buy-row"><a class="btn btn--tokopedia" href="{e(tokped)}" target="_blank" rel="noopener">Tokopedia</a><a class="btn btn--tiktok" href="{e(tiktok)}" target="_blank" rel="noopener">TikTok Shop</a></div>
-<a class="btn btn--wa btn--block" href="{e(wa)}" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg> Tanya stok &amp; kecocokan via WhatsApp</a>
 </div>
 <section class="pd__desc"><h2 class="sp-h">Deskripsi produk</h2><div>{e(p['desc'] or 'Hubungi kami untuk detail produk.')}</div></section>
 </div>
@@ -170,7 +166,6 @@ def page(p, cfg, img_base, ver, related, sprite):
 <p>© {date.today().year} {e(cfg['storeName'])} · {e(cfg['hoursText'])}</p>
 <p><a href="../" style="color:inherit">Kembali ke katalog</a></p>
 </div></footer>
-<a class="fab-wa" href="{e(wa)}" target="_blank" rel="noopener" aria-label="Chat WhatsApp"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span>Tanya stok</span></a>
 </body>
 </html>"""
 
@@ -187,8 +182,7 @@ def main():
     json.dump(data, open(path, "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
 
     out_dir = os.path.join(ROOT, "produk")
-    shutil.rmtree(out_dir, ignore_errors=True)
-    os.makedirs(out_dir)
+    os.makedirs(out_dir, exist_ok=True)
     by_cat = {}
     for p in prods:
         by_cat.setdefault(p["cat"], []).append(p)

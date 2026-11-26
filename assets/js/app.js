@@ -49,7 +49,6 @@
   const rupiah = (n) => "Rp" + Number(n).toLocaleString("id-ID");
   const priceText = (p) => (p.min === p.max ? rupiah(p.min) : rupiah(p.min) + " – " + rupiah(p.max));
   const norm = (s) => (s || "").toLowerCase().normalize("NFKD").replace(/[^\w\s.\-/]/g, " ").replace(/\s+/g, " ").trim();
-  const waLink = (text) => "https://wa.me/" + CFG.whatsapp + (text ? "?text=" + encodeURIComponent(text) : "");
   const marketUrl = (m) => {
     if (m === "shopee") return CFG.shopee;
     if (m === "tokopedia") return CFG.tokopedia || "https://www.tokopedia.com/search?st=shop&q=" + encodeURIComponent(CFG.storeName);
@@ -78,9 +77,7 @@
 
   // ---------- Info toko statis ----------
   function initStatic() {
-    $$("[data-wa]").forEach((a) => (a.href = waLink(a.dataset.waText || "Halo " + CFG.storeName + ", saya mau tanya spare part.")));
     $$("[data-market]").forEach((a) => (a.href = marketUrl(a.dataset.market)));
-    $$("[data-wa-display]").forEach((e) => (e.textContent = CFG.whatsappDisplay));
     $$("[data-hours]").forEach((e) => (e.textContent = CFG.hoursText));
     $("#year").textContent = new Date().getFullYear();
 
@@ -99,7 +96,7 @@
         let nd = day, today = CFG.openDays.includes(day) && h < CFG.openHour;
         if (!today) { do { nd = (nd + 1) % 7; } while (!CFG.openDays.includes(nd)); }
         const names = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
-        txt = "Sedang tutup · buka " + (today ? "hari ini" : nd === (day + 1) % 7 ? "besok" : names[nd]) + " pukul " + String(CFG.openHour).padStart(2, "0") + ".00 WIB. Pesan WhatsApp tetap kami balas.";
+        txt = "Sedang tutup · buka " + (today ? "hari ini" : nd === (day + 1) % 7 ? "besok" : names[nd]) + " pukul " + String(CFG.openHour).padStart(2, "0") + ".00 WIB";
       }
       $("#openStatus").textContent = txt;
     }
@@ -266,7 +263,6 @@
       ? `Menampilkan <b>${Math.min(state.shown, total).toLocaleString("id-ID")}</b> dari <b>${total.toLocaleString("id-ID")}</b> produk`
       : "0 produk";
     $("#emptyState").hidden = total > 0;
-    $("#emptyWa").href = waLink("Halo " + CFG.storeName + ", apakah ada " + (state.q || "spare part") + "? Untuk mobil: ");
     $("#moreWrap").hidden = state.shown >= total;
     $("#moreInfo").textContent = `Masih ada ${(total - state.shown).toLocaleString("id-ID")} produk lagi`;
     $("#applyCount").textContent = total.toLocaleString("id-ID");
@@ -356,8 +352,6 @@
     $("#pdPrice").textContent = v ? rupiah(v.p) : priceText(p);
     const st = stockInfo(v ? v.s : p.stock);
     $("#pdStock").innerHTML = `<span class="stock ${st.cls}">${st.text}</span>${v ? ` <span class="muted">· varian ${esc(v.n)}</span>` : ""}`;
-    const msg = `Halo ${CFG.storeName}, saya tertarik dengan produk ini:\n*${p.name}*${v ? "\nVarian: " + v.n : ""}\nHarga: ${v ? rupiah(v.p) : priceText(p)}\n${productUrl(p)}\n\nApakah stoknya ada dan cocok untuk mobil saya? Tipe/tahun mobil: `;
-    $("#pdWa").href = waLink(msg);
   }
 
   function openProduct(id, push = true) {
