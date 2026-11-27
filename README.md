@@ -1,6 +1,10 @@
 <div align="center">
 
-<img src="assets/img/logo.png" alt="ASJ Autoparts" width="320">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/img/logo-white.png">
+  <source media="(prefers-color-scheme: light)" srcset="assets/img/logo.png">
+  <img src="assets/img/logo.png" alt="ASJ Autoparts" width="320">
+</picture>
 
 ### Spare part tepat, kendaraan kembali melaju.
 
