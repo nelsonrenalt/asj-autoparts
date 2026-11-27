@@ -19,33 +19,33 @@ Website katalog resmi **ASJ Autoparts**, toko spare part mobil & truk dengan 1.2
 
 ---
 
-## ✨ Fitur
+## Fitur
 
-| | |
+| Fitur | Keterangan |
 |---|---|
-| 🔎 **Pencarian pintar** | Paham istilah bengkel, misalnya *laher = bearing*, *kampas = brake pad*, *fan belt = tali kipas* |
-| 🗂️ **Filter lengkap** | Kategori, merk kendaraan (Mitsubishi, Toyota, Daihatsu, Isuzu, Suzuki, Hino), merk part, dan ketersediaan stok |
-| 🛒 **Beli langsung** | Setiap produk terhubung ke Shopee, Tokopedia, dan TikTok Shop |
-| 🟢 **Status toko real-time** | Menampilkan *buka / tutup* sesuai jam operasional (WIB) |
-| 📱 **Mobile-first** | Nyaman dipakai di HP: tombol besar, filter geser, galeri bisa di-swipe |
-| ♿ **Ramah pengguna (HCI)** | Navigasi keyboard, kontras warna jelas, tombol *Back* berfungsi, link produk bisa dibagikan |
-| 🌐 **SEO Google** | 1.248 halaman produk + `sitemap.xml` + data terstruktur (Product schema) agar mudah ditemukan di Google |
-| ⚡ **Ringan & gratis** | Website statis tanpa server, di-hosting gratis di GitHub Pages |
+| **Pencarian pintar** | Paham istilah bengkel, misalnya *laher = bearing*, *kampas = brake pad*, *fan belt = tali kipas* |
+| **Filter lengkap** | Kategori, merk kendaraan (Mitsubishi, Toyota, Daihatsu, Isuzu, Suzuki, Hino), merk part, dan ketersediaan stok |
+| **Beli langsung** | Setiap produk terhubung ke Shopee, Tokopedia, dan TikTok Shop |
+| **Status toko real-time** | Menampilkan *buka / tutup* sesuai jam operasional (WIB) |
+| **Mobile-first** | Nyaman dipakai di HP: tombol besar, filter geser, galeri bisa di-swipe |
+| **Ramah pengguna (HCI)** | Navigasi keyboard, kontras warna jelas, tombol *Back* berfungsi, link produk bisa dibagikan |
+| **SEO Google** | 1.248 halaman produk + `sitemap.xml` + data terstruktur (Product schema) agar mudah ditemukan di Google |
+| **Ringan & gratis** | Website statis tanpa server, di-hosting gratis di GitHub Pages |
 
-## 🧱 Teknologi
+## Teknologi
 
 HTML · CSS · JavaScript (tanpa framework) · Python (pengolah data produk) · GitHub Pages
 
 Tipografi: **Archivo** (judul) & **Manrope** (teks)
 
-## 📁 Struktur
+## Struktur
 
 ```
 asj-autoparts/
 ├── index.html               Halaman utama
 ├── assets/
 │   ├── css/style.css        Tampilan
-│   ├── js/config.js         ⚙️ Pengaturan toko (jam buka, link marketplace)
+│   ├── js/config.js         Pengaturan toko (jam buka, link marketplace)
 │   ├── js/app.js            Logika katalog
 │   └── img/                 Logo & ikon
 ├── data/products.json       Data produk (otomatis dari export Shopee)
@@ -56,7 +56,7 @@ asj-autoparts/
     └── build_pages.py       products.json → halaman produk + sitemap
 ```
 
-## 🔄 Memperbarui produk
+## Memperbarui produk
 
 1. **Shopee Seller Centre → Produk Saya → Update Massal**, lalu download *Info Dasar*, *Info Penjualan*, dan *Info Media*.
 2. Simpan semua file `.xlsx` dalam satu folder, lalu jalankan:
@@ -74,11 +74,11 @@ asj-autoparts/
 
 > Jika mengubah `style.css` atau `app.js`, naikkan juga angka `?v=` di `index.html` agar pengunjung langsung mendapat versi terbaru.
 
-## ⚙️ Mengubah info toko
+## Mengubah info toko
 
 Edit `assets/js/config.js` untuk mengganti jam operasional atau link marketplace.
 
-## 💻 Menjalankan di komputer
+## Menjalankan di komputer
 
 ```bash
 python -m http.server 8000
